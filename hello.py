@@ -14,8 +14,7 @@ def main():
    
     input_list = [(1,2),(3,4),(5,6),(7,8),(9,10),(11,12),(13,14),(15,16),(17,18),(19,20),(21,22),(23,24),(25,26),(27,28),(29,30),(31,32),(33,34),(35,36),(37,38),(39,40),(41,42),(43,44),(45,46),(47,48),(49,50),(51,),(53,55),(56,),(59,),(60,),(61,),(62,),(72,),(77,78),(79,80),(81,82),(83,84),(85,86),(87,88),(89,90),(92,),(93,),(94,),(96,),(97,98),(99,100)]
 
-    #register_ops = {}
-
+   
     #Thanks, http://stackoverflow.com/questions/24289180/how-to-convert-a-hex-string-into-an-unpacked-ieee-754-format-number !
     
     def two_registers_into_float(register_1, register_2):
@@ -63,9 +62,7 @@ def main():
         the_hex = hex_1 + hex_2
         return int(the_hex,16)
 
-    #Let's add our functions in the dict. 
-
-    #Thanks https://wiki.python.org/moin/BitManipulation   
+   #Thanks https://wiki.python.org/moin/BitManipulation   
 
       
     #Iterate the input_list
