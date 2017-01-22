@@ -9,10 +9,10 @@ As per my understanding from the problem description the values from the input.t
 
 From the manual (MODBUS register table), I understood that :
  
-1)Long is a signed 4-byte integer
+1)Long is a signed 4-byte integer, 
   Register 21-22, Negative energy accumulator is -56.
 
-2)FLOAT/ REAL4 singular ieee-754 number
+2)FLOAT/ REAL4 singular ieee-754 number, 
   Register 33-34, Temperature #1/inlet is 7.101173400878906.
     
 3)INTEGER / high byte is step, low byte is signal quality. I am guessing low byte is the last 4 bits of the input
