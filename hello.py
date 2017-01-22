@@ -22,10 +22,8 @@ def main():
         #registers into hex strings
         hex_1 = hex(int(register_2))[2:]
         hex_2 = hex(int(register_1))[2:]
-        #print(hex_1)
         #String concat
         the_hex = hex_1 + hex_2
-        #Unpack, no way to explain this except magic
         return struct.unpack('>f', binascii.unhexlify(the_hex))[0]
 
     def two_registers_into_long(register_1, register_2):
@@ -37,14 +35,13 @@ def main():
         the_hex = hex_1 + hex_2
         #print(len(the_hex))  
         if len(the_hex) == (8):      
-        #Unpack, no way how it is happening. but result verified
             return struct.unpack('>l', binascii.unhexlify(the_hex))[0]
         else:
             return int(the_hex)
    
     def one_register_into_int(register):
         bin_string = bin(register)
-        #Last four bits, the 2 in the end means that its using binary, why? I dont know.
+        #Last four bits, the 2 in the end means that its using binary
         return int(bin_string[4:],2)
     
     def one_register_into_integer(register):
