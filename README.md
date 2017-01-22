@@ -2,31 +2,31 @@
 
 TUF-2000M is an ultrasonic energy meter that has a Modbus interface described in docs/tuf-2000m.pdf.
 
-As per my understanding from the problem description 
-
-Input.text file contains the live text feed that shows the time of the reading followed by the first 100 register values.
+Input.txt file contains the live text feed that shows the time of the reading followed by the first 100 register values.
 Hello.py parses the text file, reads the register number and the corresponding values, and converts them into human readable format. 
 
-In order to understand the human readable format, or into which data types the values need to be converted, I cross-checked the given examples with the manua provided ( docs/tuf-2000m.pdf ).
+As per my understanding from the problem description the values from the input.txt files need to be parsed and converted to human readable format. In order to understand the human readable format, or into which data types the values need to be converted, I cross-checked the given examples with the manual provided ( docs/tuf-2000m.pdf ).
 
- From the manual (MODBUS register table), I understood that :
+From the manual (MODBUS register table), I understood that :
  
-    1)Long is a signed 4-byte integer
-     Register 21-22, Negative energy accumulator is -56.
+1)Long is a signed 4-byte integer
+  Register 21-22, Negative energy accumulator is -56.
 
-    2)FLOAT/ REAL4 singular ieee-754 number
-     Register 33-34, Temperature #1/inlet is 7.101173400878906.
+2)FLOAT/ REAL4 singular ieee-754 number
+  Register 33-34, Temperature #1/inlet is 7.101173400878906.
     
-    3)INTEGER / high byte is step, low byte is signal quality. I am guessing  low byte is the last 4 bits of the input
-     Register 92, Signal Quality is 38.
+3)INTEGER / high byte is step, low byte is signal quality. I am guessing low byte is the last 4 bits of the input
+  Register 92, Signal Quality is 38.
      
-     Since the highest value in the live feed is 65535 which is less than 2 to the power 16, the values have to be 16 bit decimal format. I tried to reproduce the three example lines from the manual based on the docs as mentioned above. I began by writing three functions: for register 21-22, register 33-34, and register 92. This involved conversion of data to LONG, FLOAT, INTEGER respectivily.
+Since the highest value in the live feed is 65535 which is less than 2 to the power 16, the values have to be 16 bit decimal format. I tried to reproduce the three example lines from the manual based on the docs as mentioned above. I began the task by writing three functions: for register 21-22, register 33-34, and register 92. This involved conversion of data to LONG, FLOAT, INTEGER for register 21-22, 33-34 and 92 respectivily.
      
-     Where it involved more than one register, it involved conversion from current format to hexadecimal so that concanating the values is possible. After verifying the values with the function, I tried to incorporate the rest of the values to the same function depending on whether they need to be converted to INTEGER, FLOAT or LONG. 
+Where it involved more than one register, it involved conversion from current format to hexadecimal so that concanating the values is possible. After verifying the values with the function written, I tried to incorporate the rest of the values to the same function depending on whether they need to be converted to INTEGER, FLOAT or LONG. 
 
 My result:
-(1, 2) -0.8598267436027527
+(1, 2) -0.8598267436027527 
+
 (3, 4) -0.008671708405017853
+
 (5, 6) -0.46402212977409363
 (7, 8) 1343.789794921875
 (9, 10) 0
