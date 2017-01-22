@@ -10,13 +10,13 @@ Hello.py parses the text file, reads the register number and the corresponding v
 In order to understand the human readable format, or into which data types the values need to be converted, I cross-checked the given examples with the manua provided ( docs/tuf-2000m.pdf ).
 
  From the manual (MODBUS register table), I understood that 
-    -Long is a signed 4-byte integer
+    1)Long is a signed 4-byte integer
      Register 21-22, Negative energy accumulator is -56.
 
-    -FLOAT/ REAL4 singular ieee-754 number
+    2)FLOAT/ REAL4 singular ieee-754 number
      Register 33-34, Temperature #1/inlet is 7.101173400878906.
     
-    -INTEGER / high byte is step, low byte is signal quality. I am guessing  low byte is the last 4 bits of the input
+    3)INTEGER / high byte is step, low byte is signal quality. I am guessing  low byte is the last 4 bits of the input
      Register 92, Signal Quality is 38.
      
      Since the highest value in the live feed is 65535 which is less than 2 to the power 16, the values have to be 16 bit decimal format. I tried to reproduce the three example lines from the manual based on the docs as mentioned above. I began by writing three functions: for register 21-22, register 33-34, and register 92. This involved conversion of data to LONG, FLOAT, INTEGER respectivily.
