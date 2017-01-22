@@ -9,7 +9,8 @@ Hello.py parses the text file, reads the register number and the corresponding v
 
 In order to understand the human readable format, or into which data types the values need to be converted, I cross-checked the given examples with the manua provided ( docs/tuf-2000m.pdf ).
 
- From the manual (MODBUS register table), I understood that 
+ From the manual (MODBUS register table), I understood that :
+ 
     1)Long is a signed 4-byte integer
      Register 21-22, Negative energy accumulator is -56.
 
