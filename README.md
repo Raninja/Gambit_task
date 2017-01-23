@@ -1,7 +1,8 @@
 # Gambit_task
 
-TUF-2000M is an ultrasonic energy meter that has a Modbus interface described in docs/tuf-2000m.pdf.
+TUF-2000M is an ultrasonic energy meter that has a Modbus interface described in docs/tuf-2000m.pdf. The questio that has been attempted to solve is here:- https://github.com/gambit-labs/tuf-2000m
 
+The files involved in solving the task are input.txt and hello.py.
 Input.txt file contains the live text feed that shows the time of the reading followed by the first 100 register values.
 Hello.py parses the text file, reads the register number and the corresponding values, and converts them into human readable format. 
 
@@ -20,7 +21,7 @@ From the manual (MODBUS register table), I understood that :
      
 Since the highest value in the live feed is 65535 which is less than 2 to the power 16, the values have to be 16 bit decimal format. I tried to reproduce the three example lines from the manual based on the docs as mentioned above. I began the task by writing three functions: for register 21-22, register 33-34, and register 92. This involved conversion of data to LONG, FLOAT, INTEGER for register 21-22, 33-34 and 92 respectivily.
      
-Where it involved more than one register, it involved conversion from current format to hexadecimal so that concanating the values is possible. After verifying the values with the function written, I tried to incorporate the rest of the values to the same function depending on whether they need to be converted to INTEGER, FLOAT or LONG. However, not all the input values could be rightly converted in the same function. So, I created some conditions inside the function or entirely new functions. For example, in case of converting data into BCD, some time there is one register input and some times two. I got a feeling that the INTEGERS mentioned in the manual are of varying types, hence different functions for those types.
+Where it involved more than one register, it involved conversion from current format to hexadecimal so that concanating the values is possible. After verifying the values with the function written, I tried to incorporate the rest of the values to the same function depending on whether they need to be converted to INTEGER, FLOAT or LONG. However, not all the input values could be rightly converted in the same function. So, I created some conditions inside the function or entirely new functions. For example, in case of converting data into BCD, some time there is one register input and some times two. I got a feeling that the INTEGERS mentioned in the manual are of varying types, hence different functions for those verying types.
 
 My result:
 
